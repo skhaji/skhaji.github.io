@@ -325,6 +325,34 @@ font-weight: 400;
 font-style: italic;
 opacity: 0.3;
 }
+img.map {
+	width: 90%;
+	margin-left: 5%;
+}
+table.dems {
+	width: 45%;
+}
+h5.voters {
+	color: #2d45a6;
+	font-size: 2em;
+}
+h1 {
+	color: #2d45a6;
+	background-color: #dce4ea;
+	padding-left: 5px;
+}
+.outline {
+	color: #2d45a6;
+	border-bottom: 1px solid;
+    margin-top: 30px;
+}
+#outline {
+	width: 80%;
+	margin-left: 10%;
+}
+.subtitle {
+	color: #2d45a6;
+}
 </style>
 <script>// Production steps of ECMA-262, Edition 5, 15.4.4.18
 // Reference: http://es5.github.io/#x15.4.4.18
@@ -6393,12 +6421,11 @@ summary {
 
 <!-- #### Authors -->
 <div id="making-walk-sheets-for-every-election-district-in-brooklyn" class="section level3">
-<h3>Making Walk Sheets for Every Election District in Brooklyn</h3>
+<h3  class="subtitle">Making Walk Sheets for Every Election District in Brooklyn</h3>
 <p><br /><br /></p>
 </div>
 <div id="sara-hodges-jonna-heldrich" class="section level3">
 <h3>Sara Hodges | Jonna Heldrich</h3>
-<p><br /><br /></p>
 <div id="nyc-school-of-data" class="section level4">
 <h4>NYC School of Data</h4>
 </div>
@@ -6408,27 +6435,27 @@ summary {
 </div>
 </div>
 <div id="outline" class="section level3">
-<h3>Outline</h3>
-<p>Data Sources</p>
+<h3 class="outline">Outline</h3>
+<p class="outline">Data Sources</p>
 <p>R Script:</p>
 <pre class="r"><code>    Select voters eligible to sign petitions ~ active democrats
     
-        Clean up street names
+    Clean up street names
         
-        Create and format new variables
+    Create and format new variables
         
-        Order the voter file the way that someone might walk to collect signatures
+    Order the voter file the way that someone might walk to collect signatures
         
     Write a printable and digital walk sheet to a folder for each election district 
     
     Make a map of each election district and write it to the same folder</code></pre>
-<p>Upload to google drive</p>
-<p>Questions/Comments</p>
-<p>How to improve and make more replicable</p>
+<p class="outline">Upload to google drive</p>
+<p class="outline">Questions/Comments</p>
+<p class="outline">How to improve and make more replicable</p>
 <p><br /><br /></p>
 </div>
 <div id="data-sources" class="section level3">
-<h3>Data Sources</h3>
+<h3 class="outline">Data Sources</h3>
 <div id="kings-county-voter-file" class="section level5">
 <h5>Kings County Voter File</h5>
 <p>Request at <a href="https://www.elections.ny.gov/FoilRequests.html">NY BOE FOIL page</a></p>
@@ -6477,11 +6504,11 @@ names(nyvoter2) = voterheader</code></pre>
 </div>
 </div>
 <div id="select-voters-eligible-to-sign-petitions-active-democrats" class="section level3">
-<h3>Select voters eligible to sign petitions (active democrats)</h3>
+<h3 class="outline">Select voters eligible to sign petitions (active democrats)</h3>
 <div id="voters-in-brooklyn-2144946" class="section level5">
 <h5>Voters in Brooklyn = 2,144,946</h5>
 <p><br /><br /></p>
-<table>
+<table class="dems">
 <thead>
 <tr class="header">
 <th>Party</th>
@@ -6540,7 +6567,7 @@ names(nyvoter2) = voterheader</code></pre>
 <div id="democrats-in-brooklyn-1515756" class="section level5">
 <h5>Democrats in Brooklyn = 1,515,756</h5>
 <p><br /><br /></p>
-<table>
+<table class="dems">
 <thead>
 <tr class="header">
 <th>Type</th>
@@ -6583,7 +6610,7 @@ names(nyvoter2) = voterheader</code></pre>
 </div>
 </div>
 <div id="clean-up-street-names" class="section level3">
-<h3>Clean up street names</h3>
+<h3 class="outline">Clean up street names</h3>
 <pre class="r"><code>cleaned_dems &lt;- dems %&gt;%
   mutate(clean_addstreet = trimws(gsub(&quot;\\s+&quot;, &quot; &quot;, addstreet)),
          clean_addstreet = gsub(&quot;`&quot;, &quot;&quot;, clean_addstreet),
@@ -6696,35 +6723,15 @@ bad_streets &lt;- streets %&gt;%
   filter(count &lt; 10)
 
 kable(bad_streets[1:20, ])</code></pre>
-<table>
+<table class="dems">
 <thead>
 <tr class="header">
 <th align="left">clean_addstreet</th>
 <th align="right">count</th>
-<th align="right">aded</th>
+<th align="right">ed</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">AGATE STEET</td>
-<td align="right">1</td>
-<td align="right">56</td>
-</tr>
-<tr class="even">
-<td align="left">ALBANY AVE</td>
-<td align="right">1</td>
-<td align="right">56</td>
-</tr>
-<tr class="odd">
-<td align="left">ATLANTIC AVE</td>
-<td align="right">1</td>
-<td align="right">56</td>
-</tr>
-<tr class="even">
-<td align="left">BAINBRIDGE</td>
-<td align="right">1</td>
-<td align="right">56</td>
-</tr>
 <tr class="odd">
 <td align="left">BERGAN STEET</td>
 <td align="right">3</td>
@@ -6737,11 +6744,6 @@ kable(bad_streets[1:20, ])</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">DECATUR ST</td>
-<td align="right">1</td>
-<td align="right">56</td>
-</tr>
-<tr class="even">
-<td align="left">DEKALB AVE</td>
 <td align="right">1</td>
 <td align="right">56</td>
 </tr>
@@ -6762,11 +6764,6 @@ kable(bad_streets[1:20, ])</code></pre>
 </tr>
 <tr class="even">
 <td align="left">FULTON ST</td>
-<td align="right">1</td>
-<td align="right">56</td>
-</tr>
-<tr class="odd">
-<td align="left">GREENE AVE</td>
 <td align="right">1</td>
 <td align="right">56</td>
 </tr>
@@ -6795,16 +6792,6 @@ kable(bad_streets[1:20, ])</code></pre>
 <td align="right">2</td>
 <td align="right">56</td>
 </tr>
-<tr class="odd">
-<td align="left">KINGS 3 WALK</td>
-<td align="right">7</td>
-<td align="right">56</td>
-</tr>
-<tr class="even">
-<td align="left">KINGS 4 WALK</td>
-<td align="right">3</td>
-<td align="right">56</td>
-</tr>
 </tbody>
 </table>
 <p><br /><br /></p>
@@ -6812,7 +6799,8 @@ kable(bad_streets[1:20, ])</code></pre>
 <div id="streets-with-fewer-than-10-voters-689" class="section level4">
 <h4>Streets with fewer than 10 voters = 689</h4>
 <p>We exported this and checked the street names by hand</p>
-<p><br /><br /></p>
+	<img src="img/corrected.png">
+	<p><br /><br /></p>
 <pre class="r"><code>corrected_df &lt;- read_csv(&quot;~/Desktop/RepYourBlock/data/corrected_streets_20200210.csv&quot;) %&gt;%
   select(og_name, corrected) %&gt;%
   rename(clean_addstreet = og_name)
@@ -6858,7 +6846,7 @@ bad_streets &lt;- streets %&gt;%
 </div>
 </div>
 <div id="create-and-format-new-variables" class="section level3">
-<h3>Create and format new variables</h3>
+<h3 class="outline">Create and format new variables</h3>
 <div id="the-variables-we-use-to" class="section level4">
 <h4>The variables we use to:</h4>
 <p>Identify voters:</p>
@@ -7006,7 +6994,7 @@ cleaned_dems2 &lt;- cleaned_dems_ %&gt;%
 <p><br /><br /></p>
 </div>
 <div id="order-the-voter-file-in-a-logical-order-for-door-knocking" class="section level4">
-<h4>Order the voter file in a logical order for door knocking</h4>
+<h3 class="outline">Order the voter file in a logical order for door knocking</h4>
 <p>We sort by: street_name, streetside (odd or even), house_num, aptnum, apt</p>
 <pre class="r"><code>ads = as.list(unique(cleaned_dems2$AD))
 
@@ -7032,7 +7020,7 @@ for (i in ads) {
 </div>
 </div>
 <div id="write-a-printable-and-digital-walk-sheet-to-a-folder-for-each-election-district" class="section level3">
-<h3>Write a printable and digital walk sheet to a folder for each election district</h3>
+<h3 class="outline">Write a printable and digital walk sheet to a folder for each election district</h3>
 <div id="make-folders-and-walksheet-files-for-each-aded-and-write-them-out" class="section level4">
 <h4>Make folders and walksheet files for each AD/ED and write them out</h4>
 <pre class="r"><code>walklist &lt;- createWorkbook()
@@ -7103,6 +7091,8 @@ for (i in ads) {
 </div>
 <div id="printable-version" class="section level4">
 <h4>Printable version</h4>
+	<img class= "map" src="img/ad_56_ed_44_printable_table.png">
+	<p><br /><br /></p>
 </div>
 <div id="view-the-google-sheets-version" class="section level4">
 <h4>View the <a href="https://drive.google.com/open?id=1Q_jL2i8eY9MdGbbP_9QxR7f_A1yl1WYiGXJsFuyNINY">Google sheets version</a></h4>
@@ -7110,7 +7100,7 @@ for (i in ads) {
 </div>
 </div>
 <div id="make-a-map-of-each-election-district-write-it-to-the-same-folder" class="section level3">
-<h3>Make a map of each election district, write it to the same folder</h3>
+<h3 class="outline">Make a map of each election district, write it to the same folder</h3>
 <p><br /><br /></p>
 <div id="import-the-mappy-packages" class="section level4">
 <h4>Import the mappy packages</h4>
@@ -7183,29 +7173,29 @@ for (ed in ad_ed){
   
   mapshot(lf, file = filename_aded)  ##### exports an image of the map with baselayer
 }</code></pre>
+	<p><br /><br /></p>
+	<img class= "map" src="img/ad_56_ed_44_map.png">
+	<p><br /><br /></p>
 <p><br /><br /></p>
 </div>
 </div>
 <div id="upload-to-google-drive-or-other-file-sharing-platform" class="section level3">
-<h3>Upload to Google Drive (or other file sharing platform)</h3>
+<h3 class="outline">Upload to Google Drive (or other file sharing platform)</h3>
 <p>This takes a long time!!!</p>
 <p><br /><br /></p>
 </div>
 <div id="share-it-with-petitioners" class="section level3">
-<h3>Share it with petitioners</h3>
+<h3 class="outline">Share it with petitioners</h3>
 <p>This takes a long time!!!</p>
 <p><br /><br /></p>
 </div>
 <div id="questions---comments---ideas" class="section level3">
-<h3>Questions - Comments - Ideas</h3>
+<h3 class="outline">Questions - Comments - Ideas</h3>
 </div>
 <div id="how-to-generalize-the-script" class="section level3">
-<h3>How to generalize the script</h3>
+<h3 class="outline">How to generalize the script</h3>
 </div>
-<div id="areas-for-improvement" class="section level3">
-<h3>Areas for improvement</h3>
 <p><br /><br /> <br /><br /></p>
-</div>
 <div id="thank-you" class="section level2">
 <h2>THANK YOU!!</h2>
 </div>
