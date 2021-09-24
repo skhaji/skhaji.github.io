@@ -391,7 +391,7 @@ map.addControl(new mapboxgl.NavigationControl({
         { title: '80% to 100%', class: 'bipocvapLegend bipocvap5' }
       ],
       [
-        { title: 'Partisan Lean, 2018-2021', id: 'precinct_pleanLegendTitle', class: 'precinct_pleanLegend dataTitle' },
+        { title: 'Partisan Lean, Percent Democrat (2018-2021)', id: 'precinct_pleanLegendTitle', class: 'precinct_pleanLegend dataTitle' },
         { title: '< 40%', class: 'precinct_pleanLegend precinct_plean1' },
         { title: '40% to 46.5%', class: 'precinct_pleanLegend precinct_plean2' },
         { title: '46.5% to 50%', class: 'precinct_pleanLegend precinct_plean3' },
