@@ -34,8 +34,9 @@ body {
 		top: auto;
 	    bottom: 35px;
 	    z-index: 99999;
-	    right: auto;
-	    left: 5px;
+	    left: auto;
+	    right: 5px;
+	    height: 60px;
 	}
 
 }
@@ -49,7 +50,7 @@ body {
 
 @media (max-width: 785px) {
 	#map { 
-		top:85px;
+		top:115px;
 	}
 }
 
@@ -69,8 +70,17 @@ div#new-controls {
     font-family: "Arial";
     @include b3breakpoint(sm, desktop-first) {
     	top: 5px;
-    	// left: 40px;
     }
+}
+
+@media (max-width: 785px) {
+	div#new-controls { 
+		left: 5px;
+	}
+}
+
+div.toggle {
+	display: inline-block;
 }
 
 
@@ -150,7 +160,7 @@ LEGEND STYLING*/
     /*width: 290px;*/
     position: absolute;
     left: 10px;
-    bottom: 3%;
+    bottom: 4%;
     top: auto;
     /*background: #fff;*/
     z-index: 101;

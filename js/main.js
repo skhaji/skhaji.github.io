@@ -52,13 +52,13 @@ var mql = window.parent.matchMedia("(max-width: 785px)");
 
 
 // Set zoom levels for mobile and desktop
-// var zoomlevel;
-// if (mql.matches) {
-//     zoomlevel = 5.85;
-// }
-// else {
-//     zoomlevel = 7.65;
-// }
+var zoomlevel;
+if (mql.matches) {
+    zoomlevel = 5;
+}
+else {
+    zoomlevel = 6.5;
+}
 
 // define the center of the map for mobile and desktop
 var center;
@@ -75,7 +75,8 @@ var map = new mapboxgl.Map({
     style: "mapbox://styles/mapbox/light-v10",
     // style: "mapbox://styles/skhaji/ckmp0h2wf3g5h18n1d9vkp2kf",
 	center: center, // starting position [lng, lat]
-	zoom: 6.5, 
+	// zoom: 6.5, 
+    zoom: zoomlevel,
 	maxZoom: 13,
 	minZoom: 5
     // maxBounds: bounds  // use this if you want to keep people from zooiming away from GA
